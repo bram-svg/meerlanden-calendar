@@ -320,18 +320,44 @@ def create_ical(collections, address):
         )
 
         event.add(
-            "uid",
-            f"{uuid5(NAMESPACE_URL, uid_source)}@meerlanden-calendar",
-        )
-        event.add("summary", waste_type)
-        event.add("dtstart", collection_date)
-        event.add("dtend", collection_date + timedelta(days=1))
-        event.add("dtstamp", datetime.now(timezone.utc))
-        event.add(
-            "description",
-            "Automatisch gegenereerd op basis van de "
-            "Meerlanden/Ximmio-afvalkalender.",
-        )
+    "uid",
+    f"{uuid5(NAMESPACE_URL, uid_source)}@meerlanden-calendar",
+)
+
+wt = waste_type.upper()
+
+summary = f"🗑️ {waste_type}"
+description = f"{waste_type} wordt opgehaald"
+
+if "OPK" in wt:
+    summary = "🟦 Papier"
+    description = "Papier container wordt geleegd"
+
+elif "GFT" in wt:
+    summary = "🟩 GFT"
+    description = "GFT container wordt geleegd"
+
+elif "REST" in wt:
+    summary = "⬛ Restafval"
+    description = "Rest container wordt geleegd"
+
+elif "PMD" in wt:
+    summary = "🟧 PMD"
+    description = "PMD container wordt geleegd"
+
+elif "TEXTIEL" in wt:
+    summary = "👕 Textiel"
+    description = "Textiel wordt ingezameld"
+
+elif "KERST" in wt:
+    summary = "🎄 Kerstboom"
+    description = "Kerstboom wordt opgehaald"
+
+event.add("summary", summary)
+event.add("dtstart", collection_date)
+event.add("dtend", collection_date + timedelta(days=1))
+event.add("dtstamp", datetime.now(timezone.utc))
+event.add("description", description)
 
         calendar.add_component(event)
 
