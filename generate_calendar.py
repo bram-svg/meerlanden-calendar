@@ -337,13 +337,13 @@ def create_ical(collections, address):
             summary = "🟩 GFT"
             description = "GFT container wordt geleegd"
 
-        elif "REST" in wt:
+        elif "RST" in wt:
             summary = "⬛ Restafval"
             description = "Rest container wordt geleegd"
 
-        elif "PMD" in wt:
-            summary = "🟧 PMD"
-            description = "PMD container wordt geleegd"
+        elif "TAK" in wt:
+            summary = "🟧 TAK"
+            description = "Takkenronde Meerlanden"
 
         elif "TEXTIEL" in wt:
             summary = "👕 Textiel"
