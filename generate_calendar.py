@@ -342,7 +342,7 @@ def create_ical(collections, address):
             description = "Rest container wordt geleegd"
 
         elif "TAK" in wt:
-            summary = "🟧 TAK"
+            summary = "🟧 Takkenronde"
             description = "Takkenronde Meerlanden"
 
         elif "TEXTIEL" in wt:
